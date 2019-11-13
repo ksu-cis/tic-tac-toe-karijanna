@@ -14,7 +14,7 @@ function setTurn()
 function setWinner(winner)
 {
 	var turnElement = document.getElementById("turn");
-	turnElement.innerText = 'Player ${winner} wins!';
+    turnElement.innerText = "Player " + turn + " wins!";
 	var cells = document.getElementsByClassName("square");
 	for (i = 0; i < cells.length; i++)
 	{
@@ -76,3 +76,13 @@ for (i = 0; i < cells.length; i++)
 	cells[i].addEventListener("click", onClick);
 }
 setTurn();
+
+var form = document.getElementById("board");
+var cells = document.getElementsByClassName("cell");
+for (var 1 = 0; i < cells.length; i++)
+{
+    cells.addEventListener(event =>
+    {
+        form.submit();
+    })
+}
