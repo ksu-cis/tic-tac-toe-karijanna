@@ -86,3 +86,50 @@ for (var 1 = 0; i < cells.length; i++)
         form.submit();
     })
 }
+
+var squares = document.getElementsByClassName("square");
+var dragging;
+for (var i = 0; i < squares.length; i++)
+{
+    squares[i].addEventListener('dragenter', onDragEnter);
+    squares[i].addEventListener('drop', onDrop);
+    squares[i].addEventListener('dragleave', onDragLeave);
+    squares[i].addEventListener('dragstart', onDrageStart);
+    squares[i].addEventListener('dragend', onDragEnd);
+}
+
+function onDrageStart(event)
+{ 
+    console.log(event.target.dataset);
+    dragging = {
+        x: event.target.dataset.x,
+        y: event.target.dataset.y
+    }
+}
+
+function onDragEnter(event)
+{
+    console.log(event);
+    if (event.target.children.length > 0) return;
+    //if (!event.target.children) return;
+    if (event.target.classList.contains("checker")) return;
+    if (event.target.classList.contains("red")) return;
+    event.preventDefault();
+    event.target.style.backgroundColor = "yellow";
+}
+
+function onDrop(event)
+{
+    console.log(event);
+}
+
+function onDragEnd(event)
+{
+    console.log(event);
+}
+
+function onDragLeave(event)
+{
+    console.log(event);
+    event.target.style.backgroundColor = null;
+}
